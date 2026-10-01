@@ -1,0 +1,38 @@
+.country-name {
+  font-size: var(--fs-detail);
+  font-weight: var(--fw-bold);
+}
+
+.country-info {
+  font-size: var(--fs-homepage);
+  font-weight: var(--fw-light);
+}
+.country-card{
+display: flex;
+flex-direction: column;
+background-color: var(--color-elements);
+width: 16rem;
+height: 20rem;
+}
+.country-card-flag{
+  width: 100%;
+  height: 50%;
+  object-fit: cover;
+}
+.country-card-name{
+  font-weight: var(--fw-bold);
+}
+.country-card-body{
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+@media (max-width: 31.25rem){
+  .country-card{
+    width: 100%;
+    height: auto;
+    min-height: 18rem;
+  }
+}
