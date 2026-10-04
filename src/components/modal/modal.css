@@ -1,0 +1,24 @@
+.modal-backdrop{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-box{
+    position: relative;
+    background: var(--color-elements);
+    color: var(--color-text);
+    padding: 2rem;
+    width: 50rem;
+}
+.modal-close{
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}

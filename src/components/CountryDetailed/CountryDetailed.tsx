@@ -1,5 +1,5 @@
 import { FaArrowLeft } from 'react-icons/fa';
-import { Country } from '../types';
+import { Country } from '../../types';
 import './CountryDetailed.css';
 
 interface CountryDetailedProps {
