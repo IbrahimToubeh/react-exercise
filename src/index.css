@@ -1,0 +1,43 @@
+:root {
+  --font-family: 'Nunito Sans', sans-serif;
+
+  --fs-homepage: 14px;
+  --fs-detail: 16px;
+
+  --fw-light: 300;
+  --fw-semi-bold: 600;
+  --fw-bold: 800;
+
+  --color-bg: hsl(0, 0%, 90%);             
+  --color-elements: hsl(0, 100%, 100%);    
+  --color-text: hsl(200, 15%, 8%);         
+  --color-input: hsl(0, 0%, 50%);          
+}
+
+[data-theme='dark'] {
+  --color-bg: hsl(207, 26%, 17%);        
+  --color-elements: hsl(209, 23%, 22%);  
+  --color-text: hsl(0, 100%, 100%);      
+  --color-input: hsl(0, 100%, 100%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--fs-homepage);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  min-height: 100vh;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+button, input, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
