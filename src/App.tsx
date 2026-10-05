@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { FaMoon, FaSun, FaSearch } from 'react-icons/fa';
 import data from './data.json';
 import { Country } from './types';
-import CountryCard from './components/CountryCard';
-import CountryDetailed from './components/CountryDetailed';
+import CountryCard from './components/CountryCard/CountryCard';
+import CountryDetailed from './components/CountryDetailed/CountryDetailed';
 import './App.css';
-
+import Modal from './components/modal/modal';
 export default function App() {
   const [darkMode, setDarkMode] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
@@ -15,10 +15,10 @@ export default function App() {
   const countries: Country[] = data;
   const regions = ["All","Africa", "Americas", "Asia", "Europe", "Oceania"];
 
-  const filteredCountries = countries.filter((country) =>
+  const filteredCountries = useMemo(() => countries.filter((country) =>
     country.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
     (region === "" || region === "All" || country.region === region)
-  );
+  ), [countries, searchTerm, region]);
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
@@ -45,13 +45,6 @@ export default function App() {
       </header>
 
       <main className="content-container">
-        {selectedCountry ? (
-          <CountryDetailed
-            country={selectedCountry}
-            onBack={() => setSelectedCountry(null)}
-            onSelectBorder={handleSelectBorder}
-          />
-        ) : (
           <>
             <div className='filters-row'>
               <div className='search-box'>
@@ -82,7 +75,13 @@ export default function App() {
               ))}
             </section>
           </>
-        )}
+          <Modal isOpen = {selectedCountry != null}
+           onClose={() => setSelectedCountry(null)}>
+            {selectedCountry &&
+             <CountryDetailed country={selectedCountry}
+              onBack={() => setSelectedCountry(null)} 
+              onSelectBorder={handleSelectBorder} />}
+          </Modal>
       </main>
     </div>
   );

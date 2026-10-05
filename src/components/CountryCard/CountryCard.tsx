@@ -1,4 +1,4 @@
-import { Country } from '../types';
+import { Country } from '../../types';
 import './CountryCard.css';
 
 interface CountryCardProps {
